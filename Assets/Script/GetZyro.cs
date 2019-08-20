@@ -18,13 +18,13 @@ public class GetZyro : MonoBehaviour
     {
         if (!pv.isMine)
             return;
-#if UNITY_iOS
+
         var rotRH = Input.gyro.attitude;
         var rot = new Quaternion(-rotRH.x, -rotRH.z, -rotRH.y, rotRH.w) * Quaternion.Euler(90f, 0f, 0f);
 
         transform.localRotation = rot;
         string rot_string = rot.eulerAngles.ToString();
         Text.text = rot_string;
-#endif
+
     }
 }
