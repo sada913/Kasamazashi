@@ -8,8 +8,10 @@ public class PhotonConnect : MonoBehaviour
     GameObject GetGyro;
     void Start()
     {
-        // Photon に接続する(引数でゲームのバージョンを指定できる)
-        PhotonNetwork.ConnectUsingSettings(null);
+    PhotonNetwork.sendRate = 60;
+    Application.targetFrameRate = 60;
+    // Photon に接続する(引数でゲームのバージョンを指定できる)
+    PhotonNetwork.ConnectUsingSettings(null);
         //今回オートでロビーに Join する
     }
     // ロビーに入ると呼ばれる

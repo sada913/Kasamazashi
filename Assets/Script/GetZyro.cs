@@ -10,13 +10,8 @@ public class GetZyro : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        PhotonNetwork.sendRate = 60;
         pv = GetComponent<PhotonView>();
-#if !UNITY_iOS
-        if(pv.isMine)
-          gameObject.SetActive(false);
-#endif
-  }
+    }
 
     void Update()
     {
