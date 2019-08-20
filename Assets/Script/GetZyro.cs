@@ -12,7 +12,11 @@ public class GetZyro : MonoBehaviour
     {
         PhotonNetwork.sendRate = 60;
         pv = GetComponent<PhotonView>();
-    }
+#if !UNITY_iOS
+        if(pv.isMine)
+          gameObject.SetActive(false);
+#endif
+  }
 
     void Update()
     {
