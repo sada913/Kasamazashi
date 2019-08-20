@@ -25,7 +25,9 @@ public class PhotonConnect : MonoBehaviour
     void OnJoinedRoom()
     {
         Debug.Log("ルームへ入室しました。");
+#if UNITY_iOS
         var player = PhotonNetwork.Instantiate(GetGyro.name, Vector3.zero, Quaternion.Euler(0, 0, 0), 0);
+#endif
     }
     // ルームの入室に失敗すると呼ばれる
     void OnPhotonRandomJoinFailed()
