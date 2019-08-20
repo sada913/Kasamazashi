@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public int timer = 30,count =-1;
     IDisposable Timer;
     [SerializeField]
-    Button button;
+    Button button,reset;
 
     [Space]
     [SerializeField]
@@ -34,14 +34,23 @@ public class GameManager : MonoBehaviour
             StartGame();
             button.gameObject.SetActive(false);
         });
-
+        reset.onClick.AsObservable().Subscribe(n =>
+        {
+            Timer.Dispose();
+            time.text = "終了";
+            Count.text = "落とした数 :" + count.ToString();
+            Timer.Dispose();
+            button.gameObject.SetActive(true);
+            timer = 30;
+            count = 0;
+        });
     }
 
 
     public void StartGame()
     {
        CreateBall();
-        Count.text = "";
+       Count.text = "";
        Timer = Observable.Interval(TimeSpan.FromSeconds(1f)).Subscribe(n =>
         {
             timer--;
